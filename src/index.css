@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ── Custom Properties ─────────────────────────────────────── */
+:root {
+  --bg-primary:   #070D18;
+  --bg-card:      #101826;
+  --bg-sidebar:   #0B1220;
+  --color-cyan:   #00BFFF;
+  --color-blue:   #3B82F6;
+  --border:       rgba(255,255,255,0.07);
+  --text-primary: #FFFFFF;
+  --text-muted:   #94A3B8;
+  --glass-bg:     rgba(16,24,38,0.7);
+  --glass-border: rgba(255,255,255,0.07);
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* ── Glass utility ─────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,191,255,0.3); }
+
+/* ── Selection ────────────────────────────────────────────── */
+::selection { background: rgba(0,191,255,0.25); color: #fff; }
+
+/* ── AI Orb ───────────────────────────────────────────────── */
+@keyframes orb-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orb-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.08); }
+}
+@keyframes orb-glow {
+  0%, 100% { box-shadow: 0 0 30px 10px rgba(0,191,255,0.2), 0 0 80px 20px rgba(59,130,246,0.1); }
+  50%       { box-shadow: 0 0 60px 20px rgba(0,191,255,0.4), 0 0 120px 40px rgba(59,130,246,0.2); }
+}
+@keyframes orb-listening {
+  0%, 100% { box-shadow: 0 0 40px 15px rgba(0,191,255,0.5), 0 0 100px 40px rgba(0,191,255,0.2); transform: scale(1); }
+  50%       { box-shadow: 0 0 80px 30px rgba(0,191,255,0.7), 0 0 160px 60px rgba(0,191,255,0.3); transform: scale(1.05); }
+}
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.3); }
+  50%       { transform: scaleY(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.orb-idle { animation: orb-glow 3s ease-in-out infinite, float 4s ease-in-out infinite; }
+.orb-listening { animation: orb-listening 1.2s ease-in-out infinite; }
+
+/* ── Skeleton loading ─────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* ── Code blocks ──────────────────────────────────────────── */
+pre {
+  background: #0d1117;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 13px; }
+
+/* ── Focus rings ──────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid rgba(0,191,255,0.5);
+  outline-offset: 2px;
+}
+
+/* ── Glow button ──────────────────────────────────────────── */
+.btn-glow {
+  box-shadow: 0 0 20px rgba(0,191,255,0.3);
+  transition: box-shadow 0.2s ease;
+}
+.btn-glow:hover { box-shadow: 0 0 30px rgba(0,191,255,0.5); }

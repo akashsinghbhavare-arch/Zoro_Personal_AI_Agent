@@ -1,0 +1,49 @@
+{
+  "name": "nova-ai-desktop",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Nova AI - Desktop Voice & Productivity Assistant",
+  "author": "Nova AI Team",
+  "main": "dist-electron/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "electron:dev": "concurrently \"vite\" \"tsc -p tsconfig.electron.json -w\" \"cross-env NODE_ENV=development wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "npm run build && npm run build:electron && electron-builder --win"
+  },
+  "dependencies": {
+    "clsx": "2.1.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "electron-updater": "^6.8.9",
+    "express": "^5.2.1",
+    "firebase": "^12.17.0",
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.27.0",
+    "pdfjs-dist": "^4.10.38",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "tailwind-merge": "3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.17",
+    "@types/node": "22.19.17",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.1.1",
+    "concurrently": "^10.0.4",
+    "cross-env": "^10.1.0",
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3",
+    "electron-packager": "^17.1.2",
+    "tailwindcss": "4.1.17",
+    "ts-node": "^10.9.2",
+    "typescript": "5.9.3",
+    "vite": "7.3.2",
+    "vite-plugin-singlefile": "2.3.0",
+    "wait-on": "^8.0.2"
+  }
+}
